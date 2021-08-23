@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: service-producer
+
+# rocketmq配置
+rocketmq:
+  # nameserver地址
+  name-server: 47.93.56.20:9876
+  producer:
+    # 生产组名称
+    group: producer_grp_02
