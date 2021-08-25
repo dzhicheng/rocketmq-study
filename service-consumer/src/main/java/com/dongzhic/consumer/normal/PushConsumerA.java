@@ -20,7 +20,7 @@ public class PushConsumerA {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("group1");
         // 订阅
         consumer.subscribe("TopicTest", "*");
-        consumer.setNamesrvAddr("localhost:9876");
+        consumer.setNamesrvAddr("60.60.1.61:9876");
         // 从哪儿消费：每次从最后一次消费的地址
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
         // 注册消费者监听

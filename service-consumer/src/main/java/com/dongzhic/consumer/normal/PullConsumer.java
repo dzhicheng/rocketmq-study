@@ -8,22 +8,27 @@ import org.apache.rocketmq.common.message.MessageQueue;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
 /**
  * 消费者-拉模式
  */
-
 public class PullConsumer {
+
+    /**
+     * 维护偏移量
+     */
     private static final Map<MessageQueue, Long> OFFSE_TABLE = new HashMap<MessageQueue, Long>();
 
     public static void main(String[] args) throws MQClientException {
-        DefaultMQPullConsumer consumer = new DefaultMQPullConsumer("pullconsumer");
-        consumer.setNamesrvAddr("localhost:9876");
+
+        DefaultMQPullConsumer consumer = new DefaultMQPullConsumer("normal_consumer_group");
+        consumer.setNamesrvAddr("60.60.1.61:9876");
         //consumer.setBrokerSuspendMaxTimeMillis(1000);
 
-        System.out.println("ms:"+consumer.getBrokerSuspendMaxTimeMillis());
+        System.out.println("ms: " + consumer.getBrokerSuspendMaxTimeMillis());
         consumer.start();
 
-        //1.获取MessageQueues并遍历（一个Topic包括多个MessageQueue）
+        //1.获取MessageQueues并遍历（一个Topic包括多个MessageQueue，默认是4个）
         Set<MessageQueue> mqs = consumer.fetchSubscribeMessageQueues("TopicTest");
         for (MessageQueue mq : mqs) {
             System.out.println("queueID:"+ mq.getQueueId());

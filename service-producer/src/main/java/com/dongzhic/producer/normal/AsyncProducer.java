@@ -18,9 +18,9 @@ public class AsyncProducer {
     public static void main(
             String[] args) throws MQClientException, InterruptedException, UnsupportedEncodingException {
         //生产者实例化
-        DefaultMQProducer producer = new DefaultMQProducer("async");
+        DefaultMQProducer producer = new DefaultMQProducer("normal_group");
         //指定rocket服务器地址
-        producer.setNamesrvAddr("localhost:9876");
+        producer.setNamesrvAddr("60.60.1.61:9876");
         //启动实例
         producer.start();
         //发送异步失败时的重试次数(这里不重试)
@@ -31,17 +31,26 @@ public class AsyncProducer {
         for (int i = 0; i < messageCount; i++) {
             try {
                 final int index = i;
-                Message msg = new Message("TopicTest",
-                        "TagC",
+                Message msg = new Message("TopicAsync",
+                        "tagA",
                         "OrderID"+index,
                         ("Hello world "+index).getBytes(RemotingHelper.DEFAULT_CHARSET));
                 //生产者异步发送
                 producer.send(msg, new SendCallback() {
+                    /**
+                     * 发送成功监听
+                     * @param sendResult
+                     */
                     @Override
                     public void onSuccess(SendResult sendResult) {
                         countDownLatch.countDown();
                         System.out.printf("%-10d OK %s %n", index, new String(msg.getBody()));
                     }
+
+                    /**
+                     * 发送异常监听
+                     * @param e
+                     */
                     @Override
                     public void onException(Throwable e) {
                         countDownLatch.countDown();

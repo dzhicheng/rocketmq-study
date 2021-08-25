@@ -19,7 +19,7 @@ public class PushConsumerC {
     public static void main(String[] args) throws InterruptedException, MQClientException {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("group1");
         consumer.subscribe("TopicTest", "*");
-        consumer.setNamesrvAddr("localhost:9876");
+        consumer.setNamesrvAddr("60.60.1.61 :9876");
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);//每次从最后一次消费的地址
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override

@@ -10,16 +10,16 @@ import org.apache.rocketmq.remoting.common.RemotingHelper;
  */
 public class SyncProducer {
     public static void main(String[] args) throws Exception {
-        DefaultMQProducer producer = new DefaultMQProducer("sync");
+        DefaultMQProducer producer = new DefaultMQProducer("normal_group");
         //producer.setRetryTimesWhenSendFailed(2);
-        producer.setNamesrvAddr("47.93.56.20:9876");
+        producer.setNamesrvAddr("60.60.1.61:9876");
         // 发送失败时，0不重试，1重试一次
         producer.setRetryTimesWhenSendAsyncFailed(0);
 
         producer.start();
         for (int i = 0; i < 10; i++) {
-            Message msg = new Message("TopicTest" ,
-                    "TagB" ,
+            Message msg = new Message("TopicSync" ,
+                    "tagA" ,
                     ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET)
             );
             SendResult sendResult = producer.send(msg);
