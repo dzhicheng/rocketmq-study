@@ -19,7 +19,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.List;
 
-@Component
+//@Component
 public class MQPushConsumer implements MessageListenerConcurrently {
     private  static final Logger LOGGER = LoggerFactory.getLogger(MQPushConsumer.class);
 

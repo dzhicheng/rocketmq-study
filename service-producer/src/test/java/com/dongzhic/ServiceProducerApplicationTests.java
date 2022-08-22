@@ -19,7 +19,7 @@ class ServiceProducerApplicationTests {
     @Test
     public void testSendMessage() {
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
             // topic名称
             String destination = "springboot-rocketmq-topic";
             // 消息内容

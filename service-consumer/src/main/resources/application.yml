@@ -4,6 +4,6 @@ spring:
 
 # rocketmq配置
 rocketmq:
-  name-server: 60.60.1.61:9876 # nameserver地址
+  name-server: 60.60.1.31:9876;60.60.1.32:9876 # nameserver地址
   producer:
-    group: producer_grp_02 # 生产组名称
+    group: producer_group # 生产组名称

@@ -17,7 +17,7 @@ import javax.annotation.PreDestroy;
 /**
  * RocketMQ生产者
  */
-@Component
+//@Component
 public class MQProducer {
     private  static final Logger LOGGER = LoggerFactory.getLogger(MQProducer.class);
 
