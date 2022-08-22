@@ -7,3 +7,11 @@ rocketmq:
   name-server: 60.60.1.31:9876;60.60.1.32:9876 # nameserver地址
   producer:
     group: producer_group # 生产组名称
+
+# dubbop配置
+dubbo:
+  application:
+    id: service-consumer
+    name: service-consumer
+  registry:
+    address: zookeeper://60.60.1.31:2181?backup=60.60.1.32:2181,60.60.1.33:2181

@@ -1,16 +1,18 @@
 package com.dongzhic;
 
-import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author zhicheng
+ */
 @SpringBootApplication
-@Slf4j
+@EnableDubbo
 public class ServiceProducerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ServiceProducerApplication.class, args);
-        log.info("消息发送成功！");
     }
 
 }

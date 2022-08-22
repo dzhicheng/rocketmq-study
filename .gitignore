@@ -7,8 +7,4 @@
 out
 gen
 **/.DS_Store
-**/target
-
-
-
-
+target/

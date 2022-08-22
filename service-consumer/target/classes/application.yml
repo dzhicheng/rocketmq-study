@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: service-consumer
-
-# rocketmq配置
-rocketmq:
-  name-server: 60.60.1.61:9876 # nameserver地址
-  producer:
-    group: producer_grp_02 # 生产组名称

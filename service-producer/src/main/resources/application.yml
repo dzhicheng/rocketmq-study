@@ -8,3 +8,15 @@ rocketmq:
   producer:
     # 生产组名称
     group: producer_group
+
+# dubbo配置
+dubbo:
+  application:
+    name: service-producer # dubbo应用名称
+  registry: # zookeeper集群注册中心地址
+    address: zookeeper://60.60.1.31:2181?backup=60.60.1.32:2181,60.60.1.33:2181
+  protocol:
+    name: dubbo # dubbo协议名称
+    port: 20880 # dubbo协议端口，默认20880
+  scan:
+    base-packages: com.dongzhic.service.impl
